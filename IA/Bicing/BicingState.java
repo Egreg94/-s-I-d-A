@@ -24,6 +24,8 @@ public class BicingState{
     Coordy = new ArrayList<Integer>();
     for(int i = 0; i < b.size(); ++i){
       StationData t = new StationData(b.get(i).getNumBicicletasNoUsadas(),b.get(i).getNumBicicletasNext(),b.get(i).getDemanda());
+      //System.out.println("En la estacion "+i+" faltan "+(b.get(i).getDemanda()-b.get(i).getNumBicicletasNext()));
+      //System.out.println("En la estacion "+i+" hay "+b.get(i).getNumBicicletasNoUsadas());
       Coordx.add(b.get(i).getCoordX());
       Coordy.add(b.get(i).getCoordY());
       Sd.add(t);

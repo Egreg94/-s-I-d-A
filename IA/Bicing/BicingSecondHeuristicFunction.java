@@ -12,7 +12,7 @@ public class BicingSecondHeuristicFunction implements HeuristicFunction{  //Devu
       profit += 1000*(t.nFirstBic + t.nSecondBic);
       profit -= situation.dist(t.origin,t.firstDest)*((t.nFirstBic+t.nSecondBic+9)/10);
       if(t.secondDest != -1){
-	profit -= situation.dist(t.firstDest,t.secondDest)*((t.nSecondBic+9)/10);
+	      profit -= situation.dist(t.firstDest,t.secondDest)*((t.nSecondBic+9)/10);
       }
     }
     return -profit;
