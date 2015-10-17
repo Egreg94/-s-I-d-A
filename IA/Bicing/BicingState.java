@@ -11,7 +11,6 @@ public class BicingState{
   
   public static ArrayList<Integer> Coordx;
   public static ArrayList<Integer> Coordy;
-  public static Boolean rushHour;
   
   public int dist(int i,int j){
     return Math.abs(Coordx.get(i)-Coordx.get(j))+Math.abs(Coordy.get(i)-Coordy.get(j));
@@ -21,9 +20,13 @@ public class BicingState{
     cars = ncars;
     Sd = new ArrayList<StationData>();
     tripList = new ArrayList<Trip>();
-    //TODO hacer esto bien
-    for(int i = 0; i < 25; ++i){
-      StationData t = new StationData(20,40,30+i);
+    Coordx = new ArrayList<Integer>();
+    Coordy = new ArrayList<Integer>();
+    //numBicis = b.NumBicicletas
+    for(int i = 0; i < b.size(); ++i){
+      StationData t = new StationData(b.get(i).getNumBicicletasNoUsadas(),b.get(i).getNumBicicletasNext(),b.get(i).getDemanda());
+      Coordx.add(b.get(i).getCoordX());
+      Coordy.add(b.get(i).getCoordY());
       Sd.add(t);
     }
   }
@@ -34,13 +37,11 @@ public class BicingState{
     for(int i = 0; i < inic.Sd.size(); ++i){
       Sd.add(new StationData(inic.Sd.get(i)));
     }
-//     Sd.addAll(inic.Sd);
 
     tripList = new ArrayList<Trip>();
     for(int i = 0; i < inic.tripList.size(); ++i){
       tripList.add(new Trip(inic.tripList.get(i)));
     }
-//     tripList.addAll(inic.tripList);
     if(op.origin != -1){
       --cars;
       tripList.add(op);
