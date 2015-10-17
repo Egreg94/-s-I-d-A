@@ -22,7 +22,6 @@ public class BicingState{
     tripList = new ArrayList<Trip>();
     Coordx = new ArrayList<Integer>();
     Coordy = new ArrayList<Integer>();
-    //numBicis = b.NumBicicletas
     for(int i = 0; i < b.size(); ++i){
       StationData t = new StationData(b.get(i).getNumBicicletasNoUsadas(),b.get(i).getNumBicicletasNext(),b.get(i).getDemanda());
       Coordx.add(b.get(i).getCoordX());
@@ -37,11 +36,11 @@ public class BicingState{
     for(int i = 0; i < inic.Sd.size(); ++i){
       Sd.add(new StationData(inic.Sd.get(i)));
     }
-
     tripList = new ArrayList<Trip>();
     for(int i = 0; i < inic.tripList.size(); ++i){
       tripList.add(new Trip(inic.tripList.get(i)));
     }
+
     if(op.origin != -1){
       --cars;
       tripList.add(op);

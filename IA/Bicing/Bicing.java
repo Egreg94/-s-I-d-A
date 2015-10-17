@@ -34,7 +34,6 @@ public class Bicing{
 			    new BicingSuccessorFunction(),
 			    new BicingGoalTest(),
 			    new BicingFirstHeuristicFunction());
-//       Search search = new GreedyBestFirstSearch(new TreeSearch());
       Search search =  new HillClimbingSearch();
       SearchAgent agent = new SearchAgent(problem,search);
       printActions(agent.getActions());
