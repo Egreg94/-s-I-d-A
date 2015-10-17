@@ -2,7 +2,7 @@ package IA.Bicing;
 
 import aima.search.framework.HeuristicFunction;
 
-public class BicingSecondHeuristicFunction implements HeuristicFunction{
+public class BicingSecondHeuristicFunction implements HeuristicFunction{  //Devuelve -(beneficios*100)
 
   public double getHeuristicValue(Object state) {
     BicingState situation = (BicingState) state;

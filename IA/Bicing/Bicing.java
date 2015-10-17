@@ -25,7 +25,7 @@ public class Bicing{
     Boolean rush = false;
     Estaciones b = new Estaciones(25, 1250, 0, 1234); //CAMBIAR A RANDOM... El 3cer argumento es rush
     inic = new BicingState(b,5);
-    criteria1();
+    criteria2();
   }
   
   public static void criteria1(){

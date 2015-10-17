@@ -59,13 +59,11 @@ public class HillClimbingSearch extends NodeExpander implements Search {
 	}
 
 	private double getValue(Node n, Problem p) {
-
 		return -1 * getHeuristic(n, p); //assumption greater heuristic value =>
 		// HIGHER on hill; 0 == goal state;
 	}
         
-        public List getPathStates(){
-            return SearchUtils.statesFromNodes(lastNode.getPathFromRoot());
-        }
-
+    public List getPathStates(){
+        return SearchUtils.statesFromNodes(lastNode.getPathFromRoot());
+    }
 }
