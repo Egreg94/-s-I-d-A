@@ -25,7 +25,7 @@ public class Bicing{
     Boolean rush = false;
     Estaciones b = new Estaciones(25, 1250, 0, 1234); //CAMBIAR A RANDOM... El 3cer argumento es rush
     inic = new BicingState(b,5);
-    criteria2();
+    criteria1();
   }
   
   public static void criteria1(){
@@ -58,10 +58,10 @@ public class Bicing{
   
 
   private static void printActions(List actions) {
-    System.out.println("actions");
+    //System.out.println("actions");
     for (int i = 0; i < actions.size(); i++) {
       String action = (String) actions.get(i);
-      System.out.println(action);
+      //System.out.println(action);
     }
   }
 };

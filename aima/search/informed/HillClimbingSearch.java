@@ -22,12 +22,11 @@ public class HillClimbingSearch extends NodeExpander implements Search {
 		while (true) {
 			List children = expandNode(current, p);
 			neighbor = getHighestValuedNodeFrom(children, p);
-			System.out.println("Valor de la heuristica en nodo actual: "+getHeuristic(current,p));
 			if ((neighbor == null) || (getValue(neighbor, p) <= getValue(current, p))) {
                                 goalState=current.getState();
                                 lastNode=current;
-                                System.out.println("Valor de la heuristica en el nodo final:");
-                                System.out.println(getHeuristic(current,p));
+                                //System.out.println("Valor de la heuristica en el nodo final:");
+                                //System.out.println(getHeuristic(current,p));
 				return SearchUtils.actionsFromNodes(current.getPathFromRoot());
 			}
 			current = neighbor;

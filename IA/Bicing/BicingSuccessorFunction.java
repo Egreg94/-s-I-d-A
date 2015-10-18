@@ -41,9 +41,6 @@ public class BicingSuccessorFunction implements SuccessorFunction{
 	}
       }
     }
-//     Trip oper = new Trip(-1,0,0);
-//     BicingState newState = new BicingState(situation,oper);
-//     successors.add(new Successor(oper.identifier(),newState));
     return successors;
   }
 };

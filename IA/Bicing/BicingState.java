@@ -24,8 +24,6 @@ public class BicingState{
     Coordy = new ArrayList<Integer>();
     for(int i = 0; i < b.size(); ++i){
       StationData t = new StationData(b.get(i).getNumBicicletasNoUsadas(),b.get(i).getNumBicicletasNext(),b.get(i).getDemanda());
-      //System.out.println("En la estacion "+i+" faltan "+(b.get(i).getDemanda()-b.get(i).getNumBicicletasNext()));
-      //System.out.println("En la estacion "+i+" hay "+b.get(i).getNumBicicletasNoUsadas());
       Coordx.add(b.get(i).getCoordX());
       Coordy.add(b.get(i).getCoordY());
       Sd.add(t);
@@ -51,5 +49,16 @@ public class BicingState{
       if(op.secondDest != -1) Sd.get(op.secondDest).leaveBic(op.nSecondBic);
     }
     else cars = 0;
+
+    if (cars == 0) {
+      int totalDist = 0;
+      for (int i = 0; i < tripList.size();++i) {
+        totalDist += dist(tripList.get(i).origin,tripList.get(i).firstDest);
+        if (tripList.get(i).secondDest != -1) {
+          totalDist += dist(tripList.get(i).firstDest,tripList.get(i).secondDest);
+        }
+      }
+      //System.out.println(totalDist);
+    }
   }
 };
