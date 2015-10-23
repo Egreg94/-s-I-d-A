@@ -19,17 +19,17 @@ public class Bicing{
   static BicingState inic;
   
   public static void main(String[] args){
-//     int nEst = 25;
-//     int nBic = 1250;
-//     int furg = 5;
-//     int rush = 0;
-//     int seed = 1234;
-    Random rand = new Random();
-    int furg = rand.nextInt(8)+10;
-    int nEst = furg*5;
-    int nBic = nEst*50;
-    int rush = 0;
-    int seed = rand.nextInt();
+    int nEst = 25;
+     int nBic = 1250;
+     int furg = 5;
+     int rush = 0;
+     int seed = 1234;
+    // Random rand = new Random();
+    // int furg = rand.nextInt(8)+10;
+    // int nEst = furg*5;
+    // int nBic = nEst*50;
+    // int rush = 0;
+    // int seed = rand.nextInt();
     Estaciones b = new Estaciones(nEst, nBic, rush, seed); //CAMBIAR A RANDOM... El 3cer argumento es rush
     inic = new BicingState(b,furg);
     criteria1();
