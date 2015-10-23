@@ -29,14 +29,13 @@ public class BicingSuccessorFunction implements SuccessorFunction{
 					    successors.add(new Successor(oper.identifier(),newState));							//Up to this line
 					 	}
 
-					  for(int k = 0; k < situation.Sd.size(); ++k){														//two stops
-					    if(k == j) continue;
+            for(int k = 0; k < situation.Sd.size(); ++k){														//two stops
+              if(k == j) continue;
 					    StationData s3 = situation.Sd.get(k);
 					    if(s3.Difer() < 0){
 								for(int bicis2 = 10; bicis2 <= 30; bicis2 += 10){
-						  		if(bicis2 > s1.Available() || bicis2 > -s3.Difer()){
-						   			bicis2 = Math.min(s1.Available(),-s3.Difer());
-						  		}
+									if(bicis2 > -s3.Difer()) bicis2 = -s3.Difer();
+									if(bicis2 >= Math.min(s1.Available(),30)) break; 
 						  		for(int bicis = 10-bicis2; bicis+bicis2 <= 30; bicis += 10){
 						    		if(bicis > s1.Available()-bicis2 || bicis > -s2.Difer()){
 						      		bicis = Math.min(s1.Available()-bicis2,-s2.Difer());
@@ -48,7 +47,22 @@ public class BicingSuccessorFunction implements SuccessorFunction{
 						    		successors.add(new Successor(oper.identifier(),newState));
 						    		if(bicis == Math.min(s1.Available()-bicis2,-s2.Difer())) break;
 						 			}
-						  		if(bicis2 == Math.min(s1.Available(),-s3.Difer())) break;
+						  		if(bicis2 == -s3.Difer()) break;
+						  		// if(bicis2 > s1.Available() || bicis2 > -s3.Difer()){
+						   	// 		bicis2 = Math.min(s1.Available(),-s3.Difer());
+						  		// }
+						  		// for(int bicis = 10-bicis2; bicis+bicis2 <= 30; bicis += 10){
+						    // 		if(bicis > s1.Available()-bicis2 || bicis > -s2.Difer()){
+						    //   		bicis = Math.min(s1.Available()-bicis2,-s2.Difer());
+						    //   		if(bicis <= 0) break;
+						    // 		}
+						    // 		if(bicis <= 0) continue;
+						    // 		oper = new Trip(i,bicis,j,bicis2,k);
+						    // 		newState = new BicingState(situation,oper);
+						    // 		successors.add(new Successor(oper.identifier(),newState));
+						    // 		if(bicis == Math.min(s1.Available()-bicis2,-s2.Difer())) break;
+						 			// }
+						  		// if(bicis2 == Math.min(s1.Available(),-s3.Difer())) break;
                 }
               }
             }

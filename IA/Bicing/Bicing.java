@@ -32,7 +32,7 @@ public class Bicing{
     // int seed = rand.nextInt();
     Estaciones b = new Estaciones(nEst, nBic, rush, seed); //CAMBIAR A RANDOM... El 3cer argumento es rush
     inic = new BicingState(b,furg);
-    criteria1();
+    criteria2();
   }
   
   public static void criteria1(){
