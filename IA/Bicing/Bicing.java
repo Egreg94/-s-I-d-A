@@ -20,10 +20,10 @@ public class Bicing{
   
   public static void main(String[] args){
     int nEst = 25;
-     int nBic = 1250;
-     int furg = 5;
-     int rush = 0;
-     int seed = 1234;
+    int nBic = 1250;
+    int furg = 5;
+    int rush = 0;
+    int seed = 1234;
     // Random rand = new Random();
     // int furg = rand.nextInt(8)+10;
     // int nEst = furg*5;

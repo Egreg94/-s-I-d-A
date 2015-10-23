@@ -49,12 +49,12 @@ public class BicingSuccessorFunction implements SuccessorFunction{
 						    		if(bicis == Math.min(s1.Available()-bicis2,-s2.Difer())) break;
 						 			}
 						  		if(bicis2 == Math.min(s1.Available(),-s3.Difer())) break;
-								}
-					    }
-					  }
-					}
-				}
-			}
+                }
+              }
+            }
+          }
+        }
+      }
     }
     return successors;
   }
