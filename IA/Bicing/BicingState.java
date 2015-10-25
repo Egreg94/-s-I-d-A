@@ -11,6 +11,16 @@ public class BicingState{
   
   public static ArrayList<Integer> Coordx;
   public static ArrayList<Integer> Coordy;
+  public static ArrayList<Integer> Demand;
+  
+  public int Difer(int i){
+    return Sd.get(i).NumBicNext-Demand.get(i);
+  }
+  
+  public int Available(int i){
+    if(this.Difer(i) <= 0) return 0;
+    else return Math.min(this.Difer(i),Sd.get(i).NumBicNow);
+  }
   
   public int dist(int i,int j){
     return Math.abs(Coordx.get(i)-Coordx.get(j))+Math.abs(Coordy.get(i)-Coordy.get(j));
@@ -22,10 +32,12 @@ public class BicingState{
     tripList = new ArrayList<Trip>();
     Coordx = new ArrayList<Integer>();
     Coordy = new ArrayList<Integer>();
+    Demand = new ArrayList<Integer>();
     for(int i = 0; i < b.size(); ++i){
       StationData t = new StationData(b.get(i).getNumBicicletasNoUsadas(),b.get(i).getNumBicicletasNext(),b.get(i).getDemanda());
       Coordx.add(b.get(i).getCoordX());
       Coordy.add(b.get(i).getCoordY());
+      Demand.add(b.get(i).getDemanda());
       Sd.add(t);
     }
   }

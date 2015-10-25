@@ -8,7 +8,7 @@ public class BicingFirstHeuristicFunction implements HeuristicFunction{
     double dif = 0;
     for(int i = 0; i < situation.Sd.size(); ++i){
       StationData s = situation.Sd.get(i);
-      dif += Math.max(0,s.Demand-s.NumBicNext);
+      dif += Math.max(0,situation.Demand.get(i)-s.NumBicNext);
     }
     return dif;
   }
