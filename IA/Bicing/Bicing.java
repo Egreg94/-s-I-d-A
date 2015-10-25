@@ -13,8 +13,6 @@ import aima.search.framework.TreeSearch;
 
 import IA.Bicing.Estaciones;
 
-import aima.search.informed.GreedyBestFirstSearch;
-
 public class Bicing{
   
   static BicingState inic;
