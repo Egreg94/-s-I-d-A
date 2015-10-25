@@ -11,10 +11,9 @@ public class BicingState{
   
   public static ArrayList<Integer> Coordx;
   public static ArrayList<Integer> Coordy;
-  public static ArrayList<Integer> Demand;
   
   public int Difer(int i){
-    return Sd.get(i).NumBicNext-Demand.get(i);
+    return Sd.get(i).Difer;
   }
   
   public int Available(int i){
@@ -32,12 +31,10 @@ public class BicingState{
     tripList = new ArrayList<Trip>();
     Coordx = new ArrayList<Integer>();
     Coordy = new ArrayList<Integer>();
-    Demand = new ArrayList<Integer>();
     for(int i = 0; i < b.size(); ++i){
       StationData t = new StationData(b.get(i).getNumBicicletasNoUsadas(),b.get(i).getNumBicicletasNext(),b.get(i).getDemanda());
       Coordx.add(b.get(i).getCoordX());
       Coordy.add(b.get(i).getCoordY());
-      Demand.add(b.get(i).getDemanda());
       Sd.add(t);
     }
   }
@@ -70,7 +67,6 @@ public class BicingState{
           totalDist += dist(tripList.get(i).firstDest,tripList.get(i).secondDest);
         }
       }
-      //System.out.println(totalDist);
     }
   }
 };
