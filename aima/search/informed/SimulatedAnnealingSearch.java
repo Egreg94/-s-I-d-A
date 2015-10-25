@@ -104,6 +104,8 @@ public class SimulatedAnnealingSearch extends NodeExpander implements Search {
 
 
         //System.out.println("Number of expansions = "+expansions);
+        System.out.println("Valor de la heuristica en el nodo final:");
+        System.out.println(getHeuristic(best,p));
         return ret;//Total Failure
     }
 
