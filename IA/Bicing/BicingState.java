@@ -32,10 +32,12 @@ public class BicingState{
     Coordx = new ArrayList<Integer>();
     Coordy = new ArrayList<Integer>();
     for(int i = 0; i < b.size(); ++i){
-      StationData t = new StationData(b.get(i).getNumBicicletasNoUsadas(),b.get(i).getNumBicicletasNext(),b.get(i).getDemanda());
-      Coordx.add(b.get(i).getCoordX());
-      Coordy.add(b.get(i).getCoordY());
-      Sd.add(t);
+      if (b.get(i).getNumBicicletasNext() != b.get(i).getDemanda()) {
+        StationData t = new StationData(b.get(i).getNumBicicletasNoUsadas(),b.get(i).getNumBicicletasNext(),b.get(i).getDemanda());
+        Coordx.add(b.get(i).getCoordX());
+        Coordy.add(b.get(i).getCoordY());
+        Sd.add(t);
+      }  
     }
   }
   
