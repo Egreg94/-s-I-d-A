@@ -21,8 +21,8 @@ public class Bicing{
     int n = 1;
     int nEst = n*25;
     int nBic = n*1250;
-    int furg = n*5;
-    int rush = 0;
+    int furg = n*20;
+    int rush = 1;
     int seed = 1234;
 //     Random rand = new Random();
 //     int furg = rand.nextInt(8)+10;
@@ -33,7 +33,7 @@ public class Bicing{
     Estaciones b = new Estaciones(nEst, nBic, rush, seed); //CAMBIAR A RANDOM... El 3cer argumento es rush
     inic = new BicingState(b,furg);
 //      anhealing1();
-    criteria1();
+    criteria2();
   }
   
   public static void criteria1(){
@@ -44,7 +44,7 @@ public class Bicing{
 			    new BicingFirstHeuristicFunction());
       Search search =  new HillClimbingSearch();
       SearchAgent agent = new SearchAgent(problem,search);
-      printActions(agent.getActions());
+//       printActions(agent.getActions());
     } catch(Exception e){
       e.printStackTrace();
     }
@@ -58,7 +58,7 @@ public class Bicing{
 			    new BicingSecondHeuristicFunction());
       Search search =  new HillClimbingSearch();
       SearchAgent agent = new SearchAgent(problem,search);
-      printActions(agent.getActions());
+//       printActions(agent.getActions());
     } catch(Exception e){
       e.printStackTrace();
     }
@@ -71,7 +71,7 @@ public class Bicing{
 			    new BicingFirstHeuristicFunction());
       Search search =  new SimulatedAnnealingSearch(10000,100,20,0.005);
       SearchAgent agent = new SearchAgent(problem,search);
-      printState(agent.getActions());
+//       printState(agent.getActions());
     } catch(Exception e){
       e.printStackTrace();
     }
@@ -85,7 +85,7 @@ public class Bicing{
 			    new BicingSecondHeuristicFunction());
       Search search =  new SimulatedAnnealingSearch();
       SearchAgent agent = new SearchAgent(problem,search);
-      printState(agent.getActions());
+//       printState(agent.getActions());
     } catch(Exception e){
       e.printStackTrace();
     }
