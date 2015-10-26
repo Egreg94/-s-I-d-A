@@ -25,6 +25,7 @@ public class BicingState{
     return Math.abs(Coordx.get(i)-Coordx.get(j))+Math.abs(Coordy.get(i)-Coordy.get(j));
   }
   
+  //initializes the state from the information taken from b, with ncars
   public BicingState(Estaciones b, int ncars) {
     cars = ncars;
     Sd = new ArrayList<StationData>();
@@ -41,6 +42,7 @@ public class BicingState{
     }
   }
   
+  //Copy an state and adds the trip 'op' to it
   public BicingState(BicingState inic, Trip op){
     cars = inic.cars;
     Sd = new ArrayList<StationData>();
@@ -52,28 +54,15 @@ public class BicingState{
       tripList.add(new Trip(inic.tripList.get(i)));
     }
 
-//     if(op.origin != -1){
-      --cars;
-      tripList.add(op);
-      Sd.get(op.origin).takeBic(op.nFirstBic+op.nSecondBic);
-      Sd.get(op.firstDest).leaveBic(op.nFirstBic);
-      if(op.secondDest != -1) Sd.get(op.secondDest).leaveBic(op.nSecondBic);
-//     }
-//     else cars = 0;
-
-//     if (cars == 0) {
-//       int totalDist = 0;
-//       for (int i = 0; i < tripList.size();++i) {
-//         totalDist += dist(tripList.get(i).origin,tripList.get(i).firstDest);
-//         if (tripList.get(i).secondDest != -1) {
-//           totalDist += dist(tripList.get(i).firstDest,tripList.get(i).secondDest);
-//         }
-//       }
-//     }
+    --cars;
+    tripList.add(op);
+    Sd.get(op.origin).takeBic(op.nFirstBic+op.nSecondBic);
+    Sd.get(op.firstDest).leaveBic(op.nFirstBic);
+    if(op.secondDest != -1) Sd.get(op.secondDest).leaveBic(op.nSecondBic);
   }
   
+  //Copy an state erasing the trip indexed by tripout
   public BicingState(BicingState inic, int tripout){
-//     System.out.println(tripout);
     cars = inic.cars;
     Sd = new ArrayList<StationData>();
     for(int i = 0; i < inic.Sd.size(); ++i){
@@ -86,23 +75,9 @@ public class BicingState{
     }
 
     Trip op = inic.tripList.get(tripout);
-//     if(op.origin != -1){
-      ++cars;
-//       tripList.add(op);
-      Sd.get(op.origin).takeBic(-op.nFirstBic-op.nSecondBic);
-      Sd.get(op.firstDest).leaveBic(-op.nFirstBic);
-      if(op.secondDest != -1) Sd.get(op.secondDest).leaveBic(-op.nSecondBic);
-//     }
-//     else cars = 0;
-
-//     if (cars == 0) {
-//       int totalDist = 0;
-//       for (int i = 0; i < tripList.size();++i) {
-//         totalDist += dist(tripList.get(i).origin,tripList.get(i).firstDest);
-//         if (tripList.get(i).secondDest != -1) {
-//           totalDist += dist(tripList.get(i).firstDest,tripList.get(i).secondDest);
-//         }
-//       }
-//     }
+    ++cars;
+    Sd.get(op.origin).takeBic(-op.nFirstBic-op.nSecondBic);
+    Sd.get(op.firstDest).leaveBic(-op.nFirstBic);
+    if(op.secondDest != -1) Sd.get(op.secondDest).leaveBic(-op.nSecondBic);
   }
 };

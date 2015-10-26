@@ -3,6 +3,8 @@ package IA.Bicing;
 import aima.search.framework.HeuristicFunction;
 
 public class BicingFirstHeuristicFunction implements HeuristicFunction{
+  //First heuristic
+  //Only takes into account the number of bikes moved
   public double getHeuristicValue(Object state) {
     BicingState situation = (BicingState) state;
     double dif = 0;

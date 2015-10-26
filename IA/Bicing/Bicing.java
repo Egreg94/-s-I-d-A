@@ -18,24 +18,29 @@ public class Bicing{
   static BicingState inic;
   
   public static void main(String[] args){
+    //STANDAR INITIALIZATION
     int n = 1;
     int nEst = n*25;
     int nBic = n*1250;
-    int furg = n*20;
-    int rush = 1;
+    int furg = n*5;
+    int rush = 0;
     int seed = 1234;
+    
+    //RANDOM INITIALIZATION
 //     Random rand = new Random();
 //     int furg = rand.nextInt(8)+10;
 //     int nEst = furg*5;
 //     int nBic = nEst*50;
 //     int rush = 0;
 //     int seed = rand.nextInt();
-    Estaciones b = new Estaciones(nEst, nBic, rush, seed); //CAMBIAR A RANDOM... El 3cer argumento es rush
+    
+    Estaciones b = new Estaciones(nEst, nBic, rush, seed);
     inic = new BicingState(b,furg);
-//      anhealing1();
-    criteria2();
+    //Here call desired function depending on which algorithm you want
+    criteria1();
   }
   
+  // Hillclimbing, first heuristic
   public static void criteria1(){
     try{
       Problem problem = new Problem(inic,
@@ -44,12 +49,13 @@ public class Bicing{
 			    new BicingFirstHeuristicFunction());
       Search search =  new HillClimbingSearch();
       SearchAgent agent = new SearchAgent(problem,search);
-//       printActions(agent.getActions());
+      printActions(agent.getActions());
     } catch(Exception e){
       e.printStackTrace();
     }
   }
   
+  // Hillclimbing, second heuristic
   public static void criteria2(){
     try{
       Problem problem = new Problem(inic,
@@ -58,40 +64,42 @@ public class Bicing{
 			    new BicingSecondHeuristicFunction());
       Search search =  new HillClimbingSearch();
       SearchAgent agent = new SearchAgent(problem,search);
-//       printActions(agent.getActions());
+      printActions(agent.getActions());
     } catch(Exception e){
       e.printStackTrace();
     }
   }
+  
+  // Simulated annealing, first heuristic
   public static void anhealing1(){
     try{
       Problem problem = new Problem(inic,
 			    new BicingSuccessorFunction(),
 			    new BicingGoalTest(),
 			    new BicingFirstHeuristicFunction());
-      Search search =  new SimulatedAnnealingSearch(10000,100,20,0.005);
+      Search search =  new SimulatedAnnealingSearch(20000,100,20,0.01);
       SearchAgent agent = new SearchAgent(problem,search);
-//       printState(agent.getActions());
+      printState(agent.getActions());
     } catch(Exception e){
       e.printStackTrace();
     }
   }
   
+  // Simulated annealing, second heuristic
   public static void anhealing2(){
     try{
       Problem problem = new Problem(inic,
 			    new BicingSuccessorFunction(),
 			    new BicingGoalTest(),
 			    new BicingSecondHeuristicFunction());
-      Search search =  new SimulatedAnnealingSearch();
+      Search search =  new SimulatedAnnealingSearch(20000,100,20,0.01);
       SearchAgent agent = new SearchAgent(problem,search);
-//       printState(agent.getActions());
+      printState(agent.getActions());
     } catch(Exception e){
       e.printStackTrace();
     }
   }
   
-
   private static void printActions(List actions) {
     System.out.println("actions");
     for (int i = 0; i < actions.size(); i++) {

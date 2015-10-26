@@ -4,6 +4,9 @@ import aima.search.framework.HeuristicFunction;
 
 public class BicingSecondHeuristicFunction implements HeuristicFunction{  //Devuelve -(beneficios*100)
 
+  //Second heuristic
+  //Computes the profit taking into account the travel cost and the bikes moved
+  //profit computed multiplied by 1000 for convinience
   public double getHeuristicValue(Object state) {
     BicingState situation = (BicingState) state;
     int profit = 0;
