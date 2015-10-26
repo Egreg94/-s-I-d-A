@@ -18,9 +18,10 @@ public class Bicing{
   static BicingState inic;
   
   public static void main(String[] args){
-    int nEst = 25;
-    int nBic = 1250;
-    int furg = 5;
+    int n = 1;
+    int nEst = n*25;
+    int nBic = n*1250;
+    int furg = n*5;
     int rush = 0;
     int seed = 1234;
 //     Random rand = new Random();
@@ -31,7 +32,7 @@ public class Bicing{
 //     int seed = rand.nextInt();
     Estaciones b = new Estaciones(nEst, nBic, rush, seed); //CAMBIAR A RANDOM... El 3cer argumento es rush
     inic = new BicingState(b,furg);
-     //anhealing2();
+//      anhealing1();
     criteria1();
   }
   
@@ -68,7 +69,7 @@ public class Bicing{
 			    new BicingSuccessorFunction(),
 			    new BicingGoalTest(),
 			    new BicingFirstHeuristicFunction());
-      Search search =  new SimulatedAnnealingSearch();
+      Search search =  new SimulatedAnnealingSearch(10000,100,20,0.005);
       SearchAgent agent = new SearchAgent(problem,search);
       printState(agent.getActions());
     } catch(Exception e){

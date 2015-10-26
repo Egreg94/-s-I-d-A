@@ -10,6 +10,14 @@ public class BicingSuccessorFunction implements SuccessorFunction{
   public List getSuccessors(Object state) {
     BicingState situation = (BicingState) state;
     List successors = new ArrayList();
+    
+    
+    for(int i = 0; i < situation.tripList.size(); ++i){
+      String id = "take " + situation.tripList.get(i).identifier();
+      BicingState newState = new BicingState(situation,i);
+      successors.add(new Successor(id,newState));
+    }
+    
     if(situation.cars == 0) return successors;
 
     for(int i = 0; i < situation.Sd.size(); ++i){
@@ -19,25 +27,27 @@ public class BicingSuccessorFunction implements SuccessorFunction{
 // 	  StationData s2 = situation.Sd.get(j);
 // 	  if(s2.Difer() < 0){ // for each s1, s2
 	  if(situation.Difer(j) < 0){
-// 	    int maxBic = Math.min(30,Math.min(s1.Available(),-s2.Difer())); //single stop
-// 	    Trip oper = new Trip(i,maxBic,j);
-// 	    BicingState newState = new BicingState(situation,oper);
-// 	    successors.add(new Successor(oper.identifier(),newState));
-// 	    int nearest = (maxBic/10)*10; //If using first Heuristic, comment from this line...
-// 	    if (nearest > 0 && nearest != maxBic){
-// 	      oper = new Trip(i,nearest,j);
-// 	      newState = new BicingState(situation,oper);
-// 	      successors.add(new Successor(oper.identifier(),newState)); //Up to this line
-// 	    }
-	    for(int bicis = 10; bicis <= 30; bicis += 10){
-	      if(bicis > situation.Available(i) || bicis > -situation.Difer(j)){
-		bicis = Math.min(situation.Available(i),-situation.Difer(j));
-	      }
-	      Trip oper = new Trip(i,bicis,j);
+	    {
+	      int maxBic = Math.min(30,Math.min(situation.Available(i),-situation.Difer(j))); //single stop
+	      Trip oper = new Trip(i,maxBic,j);
 	      BicingState newState = new BicingState(situation,oper);
 	      successors.add(new Successor(oper.identifier(),newState));
-	      if(bicis == Math.min(situation.Available(i),-situation.Difer(j))) break;
+	      int nearest = (maxBic/10)*10; //If using first Heuristic, comment from this line...
+	      if (nearest > 0 && nearest != maxBic){
+		oper = new Trip(i,nearest,j);
+		newState = new BicingState(situation,oper);
+		successors.add(new Successor(oper.identifier(),newState)); //Up to this line
+	      }
 	    }
+// 	    for(int bicis = 10; bicis <= 30; bicis += 10){
+// 	      if(bicis > situation.Available(i) || bicis > -situation.Difer(j)){
+// 		bicis = Math.min(situation.Available(i),-situation.Difer(j));
+// 	      }
+// 	      Trip oper = new Trip(i,bicis,j);
+// 	      BicingState newState = new BicingState(situation,oper);
+// 	      successors.add(new Successor(oper.identifier(),newState));
+// 	      if(bicis == Math.min(situation.Available(i),-situation.Difer(j))) break;
+// 	    }
             for(int k = 0; k < situation.Sd.size(); ++k){ //two stops
               if(k == j) continue;
 	      StationData s3 = situation.Sd.get(k);
@@ -79,6 +89,7 @@ public class BicingSuccessorFunction implements SuccessorFunction{
         }
       }
     }
+    
     return successors;
   }
 };
